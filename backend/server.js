@@ -3,6 +3,7 @@ import chalk from 'chalk'
 import morgan from 'morgan'
 import cookieParser from 'cookie-parser'
 import "dotenv/config"
+import { morganMiddleware, systemLogs } from './utils/Logger.js'
 
 
 const app = express()
@@ -17,6 +18,8 @@ app.use(express.urlencoded({ extended: false }))
 
 app.use(cookieParser())
 
+app.use(morganMiddleware)
+
 app.get('/api/v1/test', (req, res) => {
     res.send('hello world')
 })
@@ -27,4 +30,5 @@ app.listen(PORT, () => {
     console.log(
         `${chalk.green.bold('👍')} Server is running in ${process.env.NODE_ENV} on port ${chalk.blue.bold(PORT)}`
     );
+    systemLogs.info(`Server is running in ${process.env.NODE_ENV} mode on port ${process.env.PORT}`)
 })
