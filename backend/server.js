@@ -7,6 +7,7 @@ import "dotenv/config"
 
 import { connectDb } from './config/connectDb.js'
 import { morganMiddleware, systemLogs } from './utils/Logger.js'
+import { errorHandler, notFound } from '../backend/middleware/errorMiddleware.js'
 
 await connectDb()
 
@@ -29,6 +30,9 @@ app.use(morganMiddleware)
 app.get('/api/v1/test', (req, res) => {
     res.send('hello world')
 })
+
+app.use(notFound)
+app.use(errorHandler)
 
 const PORT = process.env.PORT || 5000
 
