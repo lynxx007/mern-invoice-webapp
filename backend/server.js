@@ -2,6 +2,7 @@ import express from 'express'
 import chalk from 'chalk'
 import morgan from 'morgan'
 import cookieParser from 'cookie-parser'
+import mongoSanitize from 'express-mongo-sanitize'
 import "dotenv/config"
 
 import { connectDb } from './config/connectDb.js'
@@ -20,6 +21,8 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 app.use(cookieParser())
+
+app.use(mongoSanitize())
 
 app.use(morganMiddleware)
 
