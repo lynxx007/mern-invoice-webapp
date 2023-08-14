@@ -16,6 +16,7 @@ const checkAuth = asyncHandler(async (req, res, next) => {
             jwt_token,
             process.env.JWT_ACCESS_SECRET_KEY,
             async (error, decoded) => {
+                console.log(decoded)
                 if (error) return res.sendStatus(403)
 
                 const userId = decoded.id;
