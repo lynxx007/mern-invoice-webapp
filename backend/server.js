@@ -3,8 +3,11 @@ import chalk from 'chalk'
 import morgan from 'morgan'
 import cookieParser from 'cookie-parser'
 import "dotenv/config"
+
+import { connectDb } from './config/connectDb.js'
 import { morganMiddleware, systemLogs } from './utils/Logger.js'
 
+await connectDb()
 
 const app = express()
 
