@@ -1,6 +1,7 @@
 import chalk from 'chalk'
 import mongoose from 'mongoose'
 import { systemLogs } from '../utils/Logger.js'
+import 'dotenv/config.js'
 
 export const connectDb = async () => {
     try {

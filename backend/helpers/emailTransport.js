@@ -1,5 +1,5 @@
 import nodemailer from 'nodemailer'
-import 'dotenv/config'
+import 'dotenv/config.js'
 let transporter;
 
 if (process.env.NODE_ENV === 'development') {

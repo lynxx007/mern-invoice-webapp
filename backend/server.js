@@ -3,11 +3,13 @@ import chalk from 'chalk'
 import morgan from 'morgan'
 import cookieParser from 'cookie-parser'
 import mongoSanitize from 'express-mongo-sanitize'
-import "dotenv/config"
+import "dotenv/config.js"
 
 import { connectDb } from './config/connectDb.js'
 import { morganMiddleware, systemLogs } from './utils/Logger.js'
 import { errorHandler, notFound } from '../backend/middleware/errorMiddleware.js'
+
+import authRoutes from './routes/authRoutes.js'
 
 await connectDb()
 
@@ -30,6 +32,8 @@ app.use(morganMiddleware)
 app.get('/api/v1/test', (req, res) => {
     res.send('hello world')
 })
+
+app.use('/api/v1/auth', authRoutes)
 
 app.use(notFound)
 app.use(errorHandler)
