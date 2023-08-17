@@ -34,6 +34,7 @@ const loginUser = expressAsyncHandler(async (req, res) => {
     }
 
     if (existingUser && (await existingUser.comparePassword(password))) {
+
         const payloadAccessToken = {
             id: existingUser._id,
             roles: existingUser.roles
