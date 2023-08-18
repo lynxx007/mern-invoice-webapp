@@ -10,6 +10,8 @@ import { morganMiddleware, systemLogs } from './utils/Logger.js'
 import { errorHandler, notFound } from '../backend/middleware/errorMiddleware.js'
 
 import authRoutes from './routes/authRoutes.js'
+import userRoutes from './routes/userRoutes.js'
+import { apiLimiter } from './middleware/apiLimiter.js'
 
 await connectDb()
 
@@ -34,6 +36,7 @@ app.get('/api/v1/test', (req, res) => {
 })
 
 app.use('/api/v1/auth', authRoutes)
+app.use('/api/v1/user', apiLimiter, userRoutes)
 
 app.use(notFound)
 app.use(errorHandler)
