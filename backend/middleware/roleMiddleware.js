@@ -24,6 +24,6 @@ const checkRole = (...allowedRoles) => {
     }
 }
 
-const ROLE = { ROLES, checkRole }
+const role = { ROLES, checkRole }
 
-export default ROLE
+export default role
