@@ -1,5 +1,5 @@
 import expressAsyncHandler from "express-async-handler";
-import User from "../../models/userModel";
+import User from "../../models/userModel.js";
 
 const getUserProfile = expressAsyncHandler(async (req, res) => {
     const userId = req.user._id

@@ -17,6 +17,8 @@ await connectDb()
 
 const app = express()
 
+app.set('trust proxy', '127.0.0.1')
+
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'))
 

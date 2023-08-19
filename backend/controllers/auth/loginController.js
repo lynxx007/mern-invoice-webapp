@@ -100,6 +100,7 @@ const loginUser = expressAsyncHandler(async (req, res) => {
         res.status(401)
         throw new Error('Invalid credentials provided')
     }
+    existingUser.password = undefined
 })
 
 export default loginUser
