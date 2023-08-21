@@ -6,7 +6,7 @@ function Copyright() {
     return (
         <Typography variant="body2" sx={{ color: "#ffffff" }} align="center">
             {"Copyright ©"}
-            <Link color="inherit" href="https://github.com/lynxx007/mern-invoice-webapp">Invoicing</Link>
+            <Link color="inherit" href="https://github.com/lynxx007/mern-invoice-webapp">Invoicing</Link>{' '}
             {new Date().getFullYear()}
         </Typography>
     )
@@ -19,16 +19,17 @@ export const Footer = () => {
             position: "fixed",
             bottom: 0,
             width: "100%",
-        }}>
+        }} className='footer'>
             <CssBaseline />
             <Box component='footer' sx={{
                 py: 1,
                 px: 1,
                 mt: "auto",
-                bgcolor: "black"
+                bgcolor: "#000000",
             }}>
                 <Typography variant='subtitle1' align='center' component='p' sx={{ color: "#07f011" }}>
-                    <FaMoneyBillWave /> Because Time is Money <FaMoneyBillWave />
+                    <FaMoneyBillWave /> Because Time is Money{' '}
+                    <FaMoneyBillWave />
                 </Typography>
                 <Copyright />
             </Box>
