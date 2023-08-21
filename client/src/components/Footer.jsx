@@ -16,16 +16,15 @@ function Copyright() {
 export const Footer = () => {
     return (
         <Box sx={{
-            position: "fixed",
-            bottom: 0,
-            width: "100%",
-        }} className='footer'>
+            bgColor: "#000000",
+            marginTop: 'auto'
+        }} className="footer">
             <CssBaseline />
             <Box component='footer' sx={{
                 py: 1,
                 px: 1,
                 mt: "auto",
-                bgcolor: "#000000",
+                bgColor: "#000000",
             }}>
                 <Typography variant='subtitle1' align='center' component='p' sx={{ color: "#07f011" }}>
                     <FaMoneyBillWave /> Because Time is Money{' '}

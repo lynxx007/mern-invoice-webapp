@@ -11,7 +11,8 @@ export const NotFound = () => {
                 display: 'flex',
                 flexDirection: 'row',
                 flexWrap: 'wrap',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                height: '94vh'
             }}>
                 <Typography variant="h1" sx={{ fontSize: "10rem", mt: "14rem" }} align="center">404 Not Found</Typography>
                 <Box>
