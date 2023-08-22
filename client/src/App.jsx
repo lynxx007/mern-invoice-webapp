@@ -9,6 +9,7 @@ import { NotFound } from './components/NotFound'
 import { customTheme } from './customTheme'
 import { useTitle } from './hooks/useTitle'
 import { HomePage } from './pages/HomePage'
+import { RegisterPage } from './features/auth/form/pages/RegisterPage'
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<HomePage />} />
+          <Route path='register' element={<RegisterPage />} />
           <Route path='*' element={<NotFound />} />
         </Route>
       </Routes>
