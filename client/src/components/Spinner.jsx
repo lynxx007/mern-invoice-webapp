@@ -1,5 +1,6 @@
-import { Box } from "@mui/material/Box"
+
 import '../styles/spinner.css'
+import { Box } from '@mui/material'
 export const Spinner = () => {
     return (
         <Box className="spinnerContainer">
