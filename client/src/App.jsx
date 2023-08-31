@@ -10,6 +10,7 @@ import { customTheme } from './customTheme'
 import { useTitle } from './hooks/useTitle'
 import { HomePage } from './pages/HomePage'
 import { RegisterPage } from './features/auth/form/pages/RegisterPage'
+import { VerificationPage } from './features/auth/form/pages/VerificationPage'
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path='/' element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path='register' element={<RegisterPage />} />
+          <Route path='auth/verify' element={<VerificationPage />} />
           <Route path='*' element={<NotFound />} />
         </Route>
       </Routes>
