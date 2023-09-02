@@ -2,10 +2,10 @@ import LockOpenIcon from '@mui/icons-material/LockOpen'
 import { Box, Button, Container, Divider, Typography, Grid } from '@mui/material'
 import { FaUserCheck } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import { GoogleLogin } from '../../../../components/GoogleLogin'
-import { AuthWrapper } from '../AuthWrapper'
-import { RegisterForm } from '../RegisterForm'
-import { StyledDivider } from '../../../../components/StyledDivider'
+import { GoogleLogin } from '../../../components/GoogleLogin'
+import { AuthWrapper } from '../form/AuthWrapper'
+import { RegisterForm } from '../form/RegisterForm'
+import { StyledDivider } from '../../../components/StyledDivider'
 export const RegisterPage = () => {
     return (
         <AuthWrapper>

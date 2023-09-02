@@ -1,46 +1,56 @@
-import { Visibility } from '@mui/icons-material'
-import { VisibilityOff } from '@mui/icons-material'
-import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { Link as RouterLink, useNavigate, useLocation } from 'react-router-dom'
-import { toast } from 'react-toastify'
-import * as Yup from 'yup'
-import { Box, Button, FormHelperText, Grid, IconButton, InputAdornment, InputLabel, Link, OutlinedInput, Stack, Typography } from '@mui/material'
-import { Formik } from 'formik'
-import AuthButtonAnimation from '../../../animations/authButtonAnimation'
-import { Spinner } from '../../../components/Spinner'
-import { useTitle } from '../../../hooks/useTitle'
-import { useLoginUserMutation } from '../authApiSlice'
-
-
+import { Visibility } from "@mui/icons-material";
+import { VisibilityOff } from "@mui/icons-material";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link as RouterLink, useNavigate, useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
+import * as Yup from "yup";
+import {
+    Box,
+    Button,
+    FormHelperText,
+    Grid,
+    IconButton,
+    InputAdornment,
+    InputLabel,
+    Link,
+    OutlinedInput,
+    Stack,
+    Typography,
+} from "@mui/material";
+import { Formik } from "formik";
+import AuthButtonAnimation from "../../../animations/authButtonAnimation";
+import { Spinner } from "../../../components/Spinner";
+import { useTitle } from "../../../hooks/useTitle";
+import { useLoginUserMutation } from "../authApiSlice";
+import { logIn } from "../authSlice";
 
 export const LoginForm = () => {
-    useTitle("Login - Invoicing")
+    useTitle("Login - Invoicing");
 
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
-    const location = useLocation()
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const location = useLocation();
 
-    const from = location.state?.from?.pathname || '/dashboard'
+    const from = location.state?.from?.pathname || "/dashboard";
 
-    const [showPassword, setShowPassword] = useState(false)
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleShowHidePassword = () => {
-        setShowPassword(!showPassword)
-    }
+        setShowPassword(!showPassword);
+    };
 
-    const handleMouseDownPassword = (e) => {
-        e.preventDefault()
-    }
+    const handleMouseDownPassword = (event) => {
+        event.preventDefault();
+    };
 
-    const [loginUser, { data, isLoading, isSuccess }] = useLoginUserMutation()
+    const [loginUser, { data, isLoading, isSuccess }] = useLoginUserMutation();
 
     useEffect(() => {
         if (isSuccess) {
-            navigate(from, { replace: true })
+            navigate(from, { replace: true });
         }
-    }, [data, isSuccess, navigate, from])
-
+    }, [data, isSuccess, navigate, from]);
 
     return (
         <>
@@ -55,20 +65,16 @@ export const LoginForm = () => {
                         .email("Must be a valid email")
                         .max(255)
                         .required("Email is required"),
-                    password: Yup.string()
-                        .max(255)
-                        .required("Password is required"),
+                    password: Yup.string().max(255).required("Password is required"),
                 })}
                 onSubmit={async (values, { setStatus, setSubmitting }) => {
                     try {
-                        const getUserCredentials = await loginUser(
-                            values
-                        ).unwrap();
-                        dispatch(loginUser({ ...getUserCredentials }));
+                        const getUserCredentials = await loginUser(values).unwrap()
+                        dispatch(logIn({ ...getUserCredentials }));
                         setStatus({ success: true });
                         setSubmitting(false);
                     } catch (err) {
-                        const message = err.data.message;
+                        const message = err;
                         toast.error(message);
                         setStatus({ success: false });
                         setSubmitting(false);
@@ -104,15 +110,10 @@ export const LoginForm = () => {
                                             placeholder="email@example.com"
                                             inputProps={{}}
                                             fullWidth
-                                            error={Boolean(
-                                                touched.email && errors.email
-                                            )}
+                                            error={Boolean(touched.email && errors.email)}
                                         />
                                         {touched.email && errors.email && (
-                                            <FormHelperText
-                                                error
-                                                id="helper-text-email-signup"
-                                            >
+                                            <FormHelperText error id="helper-text-email-signup">
                                                 {errors.email}
                                             </FormHelperText>
                                         )}
@@ -121,21 +122,12 @@ export const LoginForm = () => {
                                 {/* password */}
                                 <Grid item xs={12}>
                                     <Stack spacing={1}>
-                                        <InputLabel htmlFor="password-signup">
-                                            Password
-                                        </InputLabel>
+                                        <InputLabel htmlFor="password-signup">Password</InputLabel>
                                         <OutlinedInput
                                             fullWidth
-                                            error={Boolean(
-                                                touched.password &&
-                                                errors.password
-                                            )}
+                                            error={Boolean(touched.password && errors.password)}
                                             id="password-signup"
-                                            type={
-                                                showPassword
-                                                    ? "text"
-                                                    : "password"
-                                            }
+                                            type={showPassword ? "text" : "password"}
                                             value={values.password}
                                             name="password"
                                             onBlur={handleBlur}
@@ -146,35 +138,23 @@ export const LoginForm = () => {
                                                 <InputAdornment position="end">
                                                     <IconButton
                                                         aria-label="toggle password visiblity"
-                                                        onClick={
-                                                            handleShowHidePassword
-                                                        }
-                                                        onMouseDown={
-                                                            handleMouseDownPassword
-                                                        }
+                                                        onClick={handleShowHidePassword}
+                                                        onMouseDown={handleMouseDownPassword}
                                                         edge="end"
                                                         size="large"
                                                     >
-                                                        {showPassword ? (
-                                                            <Visibility />
-                                                        ) : (
-                                                            <VisibilityOff />
-                                                        )}
+                                                        {showPassword ? <Visibility /> : <VisibilityOff />}
                                                     </IconButton>
                                                 </InputAdornment>
                                             }
                                             placeholder="******"
                                             inputProps={{}}
                                         />
-                                        {touched.password &&
-                                            errors.password && (
-                                                <FormHelperText
-                                                    error
-                                                    id="helper-text-password-signup"
-                                                >
-                                                    {errors.password}
-                                                </FormHelperText>
-                                            )}
+                                        {touched.password && errors.password && (
+                                            <FormHelperText error id="helper-text-password-signup">
+                                                {errors.password}
+                                            </FormHelperText>
+                                        )}
                                     </Stack>
                                 </Grid>
                                 {/* forgot password */}
@@ -222,4 +202,4 @@ export const LoginForm = () => {
             </Formik>
         </>
     );
-}
+};

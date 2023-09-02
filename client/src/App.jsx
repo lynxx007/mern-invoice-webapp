@@ -9,8 +9,9 @@ import { NotFound } from './components/NotFound'
 import { customTheme } from './customTheme'
 import { useTitle } from './hooks/useTitle'
 import { HomePage } from './pages/HomePage'
-import { RegisterPage } from './features/auth/form/pages/RegisterPage'
-import { VerificationPage } from './features/auth/form/pages/VerificationPage'
+import { RegisterPage } from './features/auth/pages/RegisterPage'
+import { VerificationPage } from './features/auth/pages/VerificationPage'
+import { LoginPage } from './features/auth/pages/LoginPage'
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path='/' element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path='register' element={<RegisterPage />} />
+          <Route path='login' element={<LoginPage />} />
           <Route path='auth/verify' element={<VerificationPage />} />
           <Route path='*' element={<NotFound />} />
         </Route>

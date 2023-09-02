@@ -2,7 +2,7 @@ import LockOpenIcon from '@mui/icons-material/LockOpen'
 import { Button, Stack, Typography } from '@mui/material'
 import { FaCheckCircle } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import { useTitle } from '../../../../hooks/useTitle'
+import { useTitle } from '../../../hooks/useTitle'
 
 export const VerificationPage = () => {
   useTitle('Invoicing = Verification')

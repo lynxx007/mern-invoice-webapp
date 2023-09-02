@@ -14,7 +14,7 @@ export const authApiSlice = baseApiSlice.injectEndpoints({
                 url: '/auth/login',
                 method: 'POST',
                 body: credentials
-            })
+            }),
         })
     })
 })
