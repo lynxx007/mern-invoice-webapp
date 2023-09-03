@@ -26,6 +26,7 @@ const baseQueryWithRefreshToken = async (args, api, extraOptions) => {
             api.dispatch(logOut())
         }
     }
+    return response
 }
 
 export const baseApiSlice = createApi({

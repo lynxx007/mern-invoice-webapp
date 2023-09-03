@@ -44,8 +44,7 @@ export const LoginForm = () => {
         event.preventDefault();
     };
 
-    const [loginUser, { data, isLoading, isSuccess }] = useLoginUserMutation();
-
+    const [loginUser, { data, isLoading, isSuccess, }] = useLoginUserMutation();
     useEffect(() => {
         if (isSuccess) {
             navigate(from, { replace: true });
@@ -74,7 +73,7 @@ export const LoginForm = () => {
                         setStatus({ success: true });
                         setSubmitting(false);
                     } catch (err) {
-                        const message = err;
+                        const message = err.data.message;
                         toast.error(message);
                         setStatus({ success: false });
                         setSubmitting(false);
