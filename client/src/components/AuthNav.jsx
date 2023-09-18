@@ -7,12 +7,12 @@ import { IconButton, Box, CssBaseline, Divider, Stack, Toolbar, } from '@mui/mat
 import { styled, useTheme } from '@mui/material'
 
 import { useState } from 'react'
-import { UseSelector, useSelector } from 'react-redux/es/hooks/useSelector'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import Logo from './Logo'
-import MenuList from './MenuList'
-import ProfileInfo from '/ProfileInfo'
+import { Logo } from './Logo'
+import { MenuList } from './MenuList'
+import { ProfileInfo } from './ProfileInfo'
 
 const drawerWidth = 240
 
@@ -113,10 +113,9 @@ export const AuthNav = () => {
                         {theme.direction === 'rtl' ? <ChevronRightIcon color='success' fontSize='large' /> : <ChevronLeftIcon color='success' fontSize='large' />}
                     </IconButton>
                 </DrawerHeader>
-                <Divider>
-                    <MenuList />
-                </Divider>
+                <Divider />
+                <MenuList />
             </Drawer>
         </Box>
     )
-}
+}   
