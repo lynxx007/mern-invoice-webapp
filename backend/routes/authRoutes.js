@@ -15,7 +15,6 @@ router.post("/login", loginLimiter, loginUser)
 
 router.get("/new_access_token", newAccessToken)
 
-
 router.post("/register", registerUser);
 
 router.get("/verify/:emailToken/:userId", verifyUserEmail)
