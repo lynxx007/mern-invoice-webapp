@@ -37,10 +37,8 @@ export const googleAuth = () => {
               isEmailVerified: profile._json.email_verified,
               provider: "google",
             };
-
             user = await User.create(newUser);
           }
-
           done(null, user);
         } catch (error) {
           done(error, false);
